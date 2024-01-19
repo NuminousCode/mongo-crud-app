@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch and Display Articles</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="/">Home</a>
+        <!-- Toggler/collapsible Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/create-form">Create</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/update-form">Update</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="userCardContainer"></div>
+    <footer class="card" style = "min-height: 200px; background-color: #dee2e6 ;">
+
+    </footer>
+
+    <script>
+      // Function to fetch data and display user cards in a Bootstrap layout
+      async function fetchDataAndDisplay() {
+        try {
+          const response = await fetch("/fetch");
+          const data = await response.json();
+          console.log(JSON.stringify(data));
+          // Check if data is an object
+          if (typeof data === "object" && data !== null) {
+            // Convert data object into an array of documents
+            const dataAsArray = Object.values(data);
+
+            // Get a reference to the container where user cards will be displayed
+            const container = document.getElementById("userCardContainer");
+
+            // Loop through the array of documents and create a user card for each
+            dataAsArray.forEach((user) => {
+              const dateStr = user.date;
+              //Format date
+              const date = new Date(dateStr);
+              const formattedDate = `${date.toLocaleString("en-US", {month: "short",})} ${date.getDate()}, 
+              ${date.getFullYear()}`;
+              const cardTemplate = `
+                    <!-- Your Bootstrap user card template here -->
+                    <div class="card" style = "display: flex; flex-direction: row; font-size: 16px">
+                        <div style = "display:flex; flex-direction: column;" class="card-body">
+                            <h4 class="card-title">${user.title}</h4>
+                            <p class="card-text"><strong>Description:</strong> ${user.description}</p>
+                            <p class="card-text"><strong>Content:</strong> ${user.content}</p>
+                            <p class="card-text"><strong>Category:</strong> ${user.category}</p>
+                            <p class="card-text"><strong>Date:</strong> ${formattedDate}</p>
+                            <p class="card-text"><strong>Source:</strong> ${user.source}</p>
+                            <p class="card-text"><strong>Tags:</strong> ${user.tags}</p>
+                            <p class="card-text"><strong>Article Id:</strong> ${user._id}</p>
+                        </div>
+                        <div style = "display:flex;">
+                            <img src="${user.imageUrl}" style="max-width: 500px; max-height: 400px;" class="img-fluid rounded mx-auto d-block" alt="image">
+                        </div>
+                    </div>
+                `;
+
+              // Create a new element to hold the user card and set its inner HTML
+              const cardElement = document.createElement("div");
+              cardElement.innerHTML = cardTemplate;
+
+              // Append the user card to the container
+              container.appendChild(cardElement);
+            });
+            //Error handling
+          } else {
+            console.error("Data is not an object:", data);
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      // Call the fetchDataAndDisplay function when the page loads
+      window.onload = fetchDataAndDisplay;
+    </script>
+  </body></html>
