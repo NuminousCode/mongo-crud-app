@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import routes from "./controllers/index.js";
 import cors from 'cors'
 import path from "path";
+import dotenv from 'dotenv';
+dotenv.config();
 import { fileURLToPath } from 'url';
 
 // Converts the module URL to a file path and get the directory name
@@ -21,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // Connects to MongoDB using Mongoose
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

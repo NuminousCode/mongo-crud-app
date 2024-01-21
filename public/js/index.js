@@ -51,3 +51,4 @@
       console.error("Error fetching data:", error);
     }
   }
+  fetchDataAndDisplay()

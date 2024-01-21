@@ -21,4 +21,4 @@ const articleSchema = new mongoose.Schema({
   });
 
   // Creates and exports a model from the schema
-export const article = mongoose.model("articles", articleSchema);
+export const Article = mongoose.model("articles", articleSchema);
