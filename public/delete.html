@@ -11,6 +11,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./styles/delete.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,7 +51,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header text-white bg-primary">
-              <h2>Update By Id</h2>
+              <h2>Delete By Id</h2>
             </div>
             <div class="card-body">
               <form id="articleForm">
@@ -66,21 +67,25 @@
                     required
                   />
                 </div>
-                <div id="inputContainer" class="form-group"></div>
-                <!-- Add Bootstrap class "form-group" here -->
-
-                <br />
-                <button type="submit" class="btn btn-primary">Search</button>
-              </form>
-              <!-- Add an Update button with a unique ID -->
-              <button id="updateButton" class="btn btn-primary" style="display: none;">Update</button>
+                <div id="dataContainer" style="margin-top: 20px;"></div>
+                        
+              <button type="submit" class="btn btn-primary">Search</button>
               <div id="confirmationMessage" class="alert alert-success" style="display: none;"></div>
+              </form>
+              <div id="deleteModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Are you sure you want to delete this article?</p>
+                    <button id="confirmDelete">Confirm Delete</button>
+                </div>
+            </div>
+              <!-- Add an Update button with a unique ID -->
+              <button id="deleteButton" class="btn btn-danger" style="display: none;">Delete</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-    </script>
   </body>
 </html>

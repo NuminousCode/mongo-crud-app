@@ -1,4 +1,4 @@
-import { User } from "./models/userModel.js";
+import { User } from "../models/userModel.js";
 
 export async function getUsers() {
   try {
@@ -25,13 +25,16 @@ export async function createUser(props) {
   } 
 }
 
-export async function deleteUser() {
+export async function deleteUser(_id) {
   try {
-    await User.deleteOne();
+    const result = await User.deleteOne({ _id });
+    return result;
   } catch (error) {
     console.log(error);
+    throw error; 
   } 
 }
+
 
 export async function updateUser(_id, updateBody) {
   try {
