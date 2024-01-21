@@ -29,8 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
           });
 
           if (response.ok) {
-            const dbUser = await response.json();
-            console.log("Data submitted successfully:", dbUser);
+            const dbarticle = await response.json();
+            console.log("Data submitted successfully:", dbarticle);
+            const confirmationMessage = document.getElementById("confirmationMessage");
+            confirmationMessage.textContent = 'Article updated successfully!';
+            confirmationMessage.style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+              confirmationMessage.style.display = 'none';
+          }, 3000);
           } else {
             throw new Error("Failed to submit data");
           }

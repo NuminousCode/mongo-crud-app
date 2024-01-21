@@ -4,7 +4,7 @@ export const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-const userSchema = new mongoose.Schema({
+const articleSchema = new mongoose.Schema({
   title: String,
   description: String,
   content: {
@@ -18,4 +18,4 @@ const userSchema = new mongoose.Schema({
   tags: Array
   });
 
-export const User = mongoose.model("users", userSchema);
+export const article = mongoose.model("articles", articleSchema);

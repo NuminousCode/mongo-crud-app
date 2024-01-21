@@ -17,18 +17,18 @@ form.addEventListener("submit", async function (e) {
       const response = await fetch(`/fetchById/${searchFormData._id}`);
 
       if (response.ok) {
-        const dbUser = await response.json();
-        console.log("Data fetched successfully:", dbUser);
+        const dbarticle = await response.json();
+        console.log("Data fetched successfully:", dbarticle);
         // Clear the previous input fields if any
         inputContainer.innerHTML = "";
 
         // Loop through the key-value pairs in the JSON response
-        for (const key in dbUser) {
+        for (const key in dbarticle) {
           if (
-            dbUser.hasOwnProperty(key) &&
+            dbarticle.hasOwnProperty(key) &&
             key !== "__v"
           ) {
-            const value = key === "content" ? dbUser[key] : dbUser[key];
+            const value = key === "content" ? dbarticle[key] : dbarticle[key];
 
             // Create a Bootstrap form group
             const formGroup = document.createElement("div");
@@ -85,8 +85,8 @@ form.addEventListener("submit", async function (e) {
           });
 
           if (response.ok) {
-            const updatedUser = await response.json();
-            console.log("Data updated successfully:", updatedUser);
+            const updatedarticle = await response.json();
+            console.log("Data updated successfully:", updatedarticle);
              // Display the confirmation message
             const confirmationMessage = document.getElementById("confirmationMessage");
             confirmationMessage.textContent = 'Article updated successfully!';
