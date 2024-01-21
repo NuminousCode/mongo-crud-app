@@ -1,6 +1,6 @@
-const form = document.getElementById("articleForm"); // Get the form element by ID
-const inputContainer = document.getElementById("inputContainer"); // Get the input container element by ID
-const updateButton = document.getElementById("updateButton"); // Get the Update button element by ID
+const form = document.getElementById("articleForm"); 
+const inputContainer = document.getElementById("inputContainer"); 
+const updateButton = document.getElementById("updateButton"); 
 let isUpdateListenerAdded = false;
 
 form.addEventListener("submit", async function (e) {
@@ -13,15 +13,11 @@ form.addEventListener("submit", async function (e) {
   async function searchData(searchFormData) {
     try {
       console.log("Client-side JavaScript is running");
-
       const response = await fetch(`/fetchById/${searchFormData._id}`);
-
       if (response.ok) {
         const dbarticle = await response.json();
         console.log("Data fetched successfully:", dbarticle);
-        // Clear the previous input fields if any
         inputContainer.innerHTML = "";
-
         // Loop through the key-value pairs in the JSON response
         for (const key in dbarticle) {
           if (
@@ -32,7 +28,7 @@ form.addEventListener("submit", async function (e) {
 
             // Create a Bootstrap form group
             const formGroup = document.createElement("div");
-            formGroup.classList.add("form-group"); // Add Bootstrap class "form-group"
+            formGroup.classList.add("form-group"); 
 
             // Create a label element for the key
             const label = document.createElement("label");
@@ -58,13 +54,12 @@ form.addEventListener("submit", async function (e) {
         const searchButton = document.querySelector(
           'button[type="submit"]'
         );
-        searchButton.style.display = "none"; // Hide the Search button
-        updateButton.style.display = "block"; // Show the Update button
+        searchButton.style.display = "none"; 
+        updateButton.style.display = "block"; 
 
         // Add an event listener for the "Update" button
         if (!isUpdateListenerAdded) {
         updateButton.addEventListener("click", async function () {
-          // Create an object to store the updated data
           const updatedData = {};
 
           // Loop through the form fields and get updated values
@@ -87,15 +82,14 @@ form.addEventListener("submit", async function (e) {
           if (response.ok) {
             const updatedarticle = await response.json();
             console.log("Data updated successfully:", updatedarticle);
+            
              // Display the confirmation message
             const confirmationMessage = document.getElementById("confirmationMessage");
             confirmationMessage.textContent = 'Article updated successfully!';
             confirmationMessage.style.display = 'block';
 
-            // Reset the form fields
+            //UI reset
             form.reset();
-            
-            // Clear the input fields
             inputContainer.innerHTML = '';
             
             // Hide the Update button and show the Search button
@@ -103,11 +97,11 @@ form.addEventListener("submit", async function (e) {
             const searchButton = document.querySelector('button[type="submit"]');
             searchButton.style.display = "block";
             
-            // Optionally, hide the confirmation message after a few seconds
             setTimeout(() => {
                 confirmationMessage.style.display = 'none';
             }, 3000);
             isUpdateListenerAdded = true;
+            // error handling 
           } else {
             throw new Error("Failed to update data");
           }
