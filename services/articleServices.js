@@ -1,5 +1,7 @@
+// Imports the Article model from the articleModel file
 import { article } from "../models/articleModel.js";
 
+// CRUD functions defined
 export async function getArticles() {
   try {
     return await article.find();

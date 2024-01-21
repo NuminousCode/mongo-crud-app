@@ -1,21 +1,21 @@
-  // Function to fetch data and display article cards in a Bootstrap layout
+  // Fetch data and display article cards 
   async function fetchDataAndDisplay() {
     try {
       const response = await fetch("/fetch");
       const data = await response.json();
       console.log(JSON.stringify(data));
-      // Check if data is an object
+      // Checks if data is an object
       if (typeof data === "object" && data !== null) {
-        // Convert data object into an array of documents
+        // Conves data object into an array of documents
         const dataAsArray = Object.values(data);
 
-        // Get a reference to the container where article cards will be displayed
+        // Reference for article container
         const container = document.getElementById("articleCardContainer");
 
-        // Loop through the array of documents and create a article card for each
+        // Article cards creation loop
         dataAsArray.forEach((article) => {
           const dateStr = article.date;
-          //Format date
+          // Date formatting 
           const date = new Date(dateStr);
           const formattedDate = `${date.toLocaleString("en-US", {month: "short",})} ${date.getDate()}, 
           ${date.getFullYear()}`;
@@ -38,11 +38,9 @@
                 </div>
             `;
 
-          // Create a new element to hold the article card and set its inner HTML
+          // Article card element
           const cardElement = document.createElement("div");
           cardElement.innerHTML = cardTemplate;
-
-          // Append the article card to the container
           container.appendChild(cardElement);
         });
         //Error handling

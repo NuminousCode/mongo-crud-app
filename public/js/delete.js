@@ -1,25 +1,30 @@
-const form = document.getElementById("articleForm"); // Get the form element by ID
-const dataContainer = document.getElementById("dataContainer"); // Get the input container element by ID
-const deleteButton = document.getElementById("deleteButton"); // Get the Update button element by ID
+// DOM element references
+const form = document.getElementById("articleForm"); 
+const dataContainer = document.getElementById("dataContainer"); 
+const deleteButton = document.getElementById("deleteButton"); 
 var modal = document.getElementById("deleteModal");
 var span = document.getElementsByClassName("close")[0];
 var confirmDeleteBtn = document.getElementById("confirmDelete");
+
+// Event listener for showing the delete confirmation modal
 deleteButton.addEventListener("click", function () {
       modal.style.display = "block"; 
     });
 
+// Event listener for closing the delete confirmation modal
 span.onclick = function() {
       modal.style.display = "none";
 }
 
+// Event listener for confirming article deletion
 confirmDeleteBtn.onclick = async function() {
       var _id = deleteButton.dataset.id
       const response = await fetch(`/delete/${_id}`, {
         method: "DELETE"
         }); 
       if (response.ok) {
+        // Handle successful deletion
         modal.style.display = "none";
-        // Reset UI
         dataContainer.innerHTML = '';
         document.getElementById("_id").value = '';
         const searchButton = document.querySelector('button[type="submit"]');
@@ -37,6 +42,7 @@ confirmDeleteBtn.onclick = async function() {
       }
 }
 
+// Event listener for form submission to fetch article data by ID
 form.addEventListener("submit", async function (e) {
 e.preventDefault();
 
@@ -44,6 +50,7 @@ e.preventDefault();
       _id: document.getElementById("_id").value,
       };
 
+      // Fetch article data from the server
     async function searchData(searchFormData) {
       try {
         console.log("Client-side JavaScript is running");
@@ -54,7 +61,8 @@ e.preventDefault();
           const article = await response.json();
           const formattedDate = new Date(article.date).toLocaleDateString('en-US');
           console.log("Data fetched successfully:", article);
-                    
+          
+            //Add card with article data to dataContainer
           dataContainer.innerHTML = `
             <div class="card" style="display: flex; flex-direction: row; font-size: 16px">
               <div style="display:flex; flex-direction: column; padding: 20px" class="card-body">
@@ -88,9 +96,9 @@ e.preventDefault();
       }
     }
 
-  // Call the searchFormData function with formData
   await searchData(searchFormData);
 });
+// Event listener to close the modal if clicked outside of it
 window.onclick = function(event) {
       if (event.target == modal) {
           modal.style.display = "none";

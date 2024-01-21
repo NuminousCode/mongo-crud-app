@@ -1,13 +1,19 @@
+// Imports necessary modules 
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { createArticle, getArticles, updateArticle, getArticleById, deleteArticle } from "../services/articleServices.js";
 
+// Initializes the router object from Express 
 const router = express.Router();
+
+// Converts the module URL to a file path (__filename) and gets the directory name (__dirname)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+
+// Defins routes to serve the main html files
 router.get("/", (req, res) => {
   const filePath = path.join(__dirname, "../public/index.html");
   res.sendFile(filePath);
@@ -27,6 +33,7 @@ router.get("/delete-form", (req, res) => {
   res.sendFile(filePath);
 });
 
+// Defines read, read by Id, create, update, and delete routes
 router.get("/fetch", async (req, res) => {
   const articleData = await getArticles();
   res.json(articleData);
