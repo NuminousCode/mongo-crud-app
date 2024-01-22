@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
-// Defins routes to serve the main html files
+// Defins routes to serve html files
 router.get("/", (req, res) => {
   const filePath = path.join(__dirname, "../public/index.html");
   res.sendFile(filePath);
