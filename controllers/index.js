@@ -40,15 +40,13 @@ router.get("/fetch", async (req, res) => {
 });
 
 router.get("/fetchById/:_id", async (req, res) => {
-  console.log(req.params._id);
   const articleData = await getArticleById(req.params._id);
-  console.log(JSON.stringify(articleData));
   res.json(articleData);
 });
 
 router.post("/submit", async ({ body }, res) => {
   try {
-    console.log(body);
+  
     const dbArticle = await createArticle(body);
     res.json(dbArticle);
   } catch (err) {
@@ -58,7 +56,7 @@ router.post("/submit", async ({ body }, res) => {
 
 router.put("/update", async ({ body }, res) => {
   try {
-    console.log(body);
+    
     const updatedArticle = await updateArticle(body._id, body);
     res.json(updatedArticle);
   } catch (error) {

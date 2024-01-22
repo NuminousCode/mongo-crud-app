@@ -40,7 +40,6 @@ export async function deleteArticle(_id) {
 
 export async function updateArticle(_id, updateBody) {
   try {
-    console.log(updateBody)
     const query = { _id: _id };
     const update = await Article.findByIdAndUpdate(query, updateBody);
     return update;

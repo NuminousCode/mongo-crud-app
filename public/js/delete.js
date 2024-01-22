@@ -60,8 +60,7 @@ e.preventDefault();
         if (response.ok) {
           const article = await response.json();
           const formattedDate = new Date(article.date).toLocaleDateString('en-US');
-          console.log("Data fetched successfully:", article);
-          
+                    
             //Add card with article data to dataContainer
           dataContainer.innerHTML = `
             <div class="card" style="display: flex; flex-direction: row; font-size: 16px">

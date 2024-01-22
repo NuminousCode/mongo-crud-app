@@ -3,7 +3,7 @@
     try {
       const response = await fetch("/fetch");
       const data = await response.json();
-      console.log(JSON.stringify(data));
+      
       // Checks if data is an object
       if (typeof data === "object" && data !== null) {
         // Conves data object into an array of documents

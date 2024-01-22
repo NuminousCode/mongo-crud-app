@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (response.ok) {
             const dbarticle = await response.json();
-            console.log("Data submitted successfully:", dbarticle);
+            
       // Confirmation message display
             const confirmationMessage = document.getElementById("confirmationMessage");
             confirmationMessage.textContent = 'Article updated successfully!';
