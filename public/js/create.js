@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
       // Confirmation message display
             const confirmationMessage = document.getElementById("confirmationMessage");
-            confirmationMessage.textContent = 'Article updated successfully!';
+            confirmationMessage.textContent = 'Article created successfully!';
             confirmationMessage.style.display = 'block';
             form.reset();
             setTimeout(() => {

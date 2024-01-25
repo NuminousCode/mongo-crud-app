@@ -63,7 +63,7 @@ e.preventDefault();
                     
             //Add card with article data to dataContainer
           dataContainer.innerHTML = `
-            <div class="card" style="display: flex; flex-direction: row; font-size: 16px">
+            <div class="card" style="display: flex; flex-direction: column; font-size: 16px">
               <div style="display:flex; flex-direction: column; padding: 20px" class="card-body">
                 <h4 class="card-title">${article.title}</h4>
                 <p class="card-text"><strong>Description:</strong> ${article.description}</p>

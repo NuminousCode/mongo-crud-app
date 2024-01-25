@@ -12,7 +12,6 @@ Delete Page Styles
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
 }
 
@@ -27,6 +26,8 @@ Delete Page Styles
 
 #confirmDelete{
     width: 20%;
+    min-width: 150px;
+    min-height: 50px;
     border-radius: 10px;
     background-color: red;
     color: white;
@@ -45,4 +46,8 @@ Delete Page Styles
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#deleteButton{
+    margin-top: 10px;
 }
