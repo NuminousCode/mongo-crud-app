@@ -24,8 +24,8 @@ Interactive Front-End JavaScript: The client-side of the application is powered 
 ### Clone the Repository
 
 ```bash
-git clone 
-cd your-repo-name
+git https://github.com/NuminousCode/mongo-crud-app.git 
+cd mongo-crud-app
 ```
 Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
 
