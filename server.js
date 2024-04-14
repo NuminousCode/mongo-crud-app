@@ -2,7 +2,7 @@
 import express from "express";
 import logger from "morgan";
 import mongoose from "mongoose";
-import routes from "./controllers/index.js";
+import routes from "./routes/index.js";
 import cors from 'cors'
 import path from "path";
 import dotenv from 'dotenv';
@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 //JSON middleware
 app.use(express.json({limit: '10000mb'}));
 
-// Add routes defined in controllers
+// Add routes defined in routes
 app.use(routes);
 
 // Starts the server

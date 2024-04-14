@@ -8,7 +8,7 @@ This application features:
 * Mongo DB Atlas integration
 * Bootstrap for responsive design
 
-Structured and Modular Code: The application's codebase is organized into controllers, services, and a database model, promoting clean and maintainable code. Controllers handle the business logic, separating concerns and making the codebase more manageable. The database model defines the schema for the data and serves as a blueprint for MongoDB documents.
+Structured and Modular Code: The application's codebase is organized into routes, services, and a database model, promoting clean and maintainable code. Routes handle the routes, separating concerns and making the codebase more manageable. The database model defines the schema for the data and serves as a blueprint for MongoDB documents.
 
 Interactive Front-End JavaScript: The client-side of the application is powered by front-end JavaScript, enabling dynamic content and interactive user experiences. The seamless integration between the front-end and back-end parts of the application ensures smooth data operations and real-time page updates without needing to refresh.
 

@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
           });
 
           if (response.ok) {
-            const dbarticle = await response.json();
-            
       // Confirmation message display
             const confirmationMessage = document.getElementById("confirmationMessage");
             confirmationMessage.textContent = 'Article created successfully!';
